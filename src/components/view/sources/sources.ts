@@ -1,5 +1,6 @@
 import './sources.css';
 interface NewsSource  {
+    urlToImage: string;
     category: string;
     country: string;
     description: string;
@@ -28,3 +29,4 @@ class Sources {
 }
 
 export default Sources;
+export {NewsSource};
