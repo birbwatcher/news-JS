@@ -1,15 +1,33 @@
+
+import { apiConfig } from "./appLoader";
+
+interface Options {
+    sources?: string;
+}
+
+interface Response {
+    endpoint?: string;
+    options?: Options;
+}
+
+interface ApiOptions {
+    apiKey: string
+}
+
 class Loader {
-    constructor(baseLink, options) {
+    baseLink: apiConfig;
+    options: ApiOptions;
+    constructor(baseLink: apiConfig, options: ApiOptions) {
         this.baseLink = baseLink;
         this.options = options;
     }
-
     getResp(
-        { endpoint, options = {} },
+        { endpoint, options = {} }: Response,
         callback = () => {
             console.error('No callback for GET response');
         }
-    ) {
+    ): void {
+        
         this.load('GET', endpoint, callback, options);
     }
 
@@ -23,7 +41,7 @@ class Loader {
         return res;
     }
 
-    makeUrl(options, endpoint) {
+    makeUrl(options: Options, endpoint: string): string {
         const urlOptions = { ...this.options, ...options };
         let url = `${this.baseLink}${endpoint}?`;
 
@@ -34,7 +52,7 @@ class Loader {
         return url.slice(0, -1);
     }
 
-    load(method, endpoint, callback, options = {}) {
+    load(method: string, endpoint: string, callback: (data: string) => void, options: Options) {
         fetch(this.makeUrl(options, endpoint), { method })
             .then(this.errorHandler)
             .then((res) => res.json())
