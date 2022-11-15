@@ -8,7 +8,6 @@ class AppController extends AppLoader {
             },
             callback
         );
-        console.log(callback, 'callback');
     }
 
     getNews(e: Event, callback: () => void ){
