@@ -11,7 +11,7 @@
             <h1>News Portal</h1>
         </header>
         <main>
-            <div class="sources buttons"></div>
+            <select name="source" class="sources buttons"></select>
             <div class="news"></div>
         </main>
         <footer>
@@ -21,9 +21,9 @@
         </footer>
 
         <template id="sourceItemTemp">
-            <div class="source__item">
+            <option class="source__item">
                 <span class="source__item-name"></span>
-            </div>
+            </option>
         </template>
 
         <template id="newsItemTemp">

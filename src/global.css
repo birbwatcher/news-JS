@@ -13,6 +13,16 @@ header h1 {
     font-weight: 800;
 }
 
+.news {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.news__item {
+    width: 500px;
+}
+
 footer {
     height: 100px;
     display: flex;
