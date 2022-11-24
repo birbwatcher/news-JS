@@ -13,12 +13,13 @@ class AppController extends AppLoader {
     }
 
     getNews(e: Event, callback ){
-        let target = e.target as HTMLElement;
+        let target = e.target as HTMLInputElement;
+        // console.log(target.value)
+        // console.log(target.classList)
         const newsContainer = e.currentTarget as HTMLElement;
-
-        while (target !== newsContainer) {
-            if (target.classList.contains('source__item')) {
-                const sourceId = target.getAttribute('data-source-id');
+        // while (target !== newsContainer) {
+        //     if (target.classList.contains('source__item')) {
+                const sourceId = target.value;
                 if (newsContainer.getAttribute('data-source') !== sourceId) {
                     newsContainer.setAttribute('data-source', sourceId);
                     super.getResp(
@@ -32,9 +33,9 @@ class AppController extends AppLoader {
                     );
                 }
                 return;
-            }
-            target = target.parentNode as HTMLElement;
-        }
+            // }
+            target = target.parentNode as HTMLInputElement;
+        // }
     }
 }
 

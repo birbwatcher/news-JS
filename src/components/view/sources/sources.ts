@@ -20,6 +20,7 @@ class Sources {
             const sourceItem: HTMLElement | null = sourceClone?.querySelector('.source__item-name');
             sourceItem!.textContent = item.name;
             sourceClone.querySelector('.source__item')?.setAttribute('data-source-id', item.id);
+            sourceClone.querySelector('.source__item')?.setAttribute('value', item.id);
 
             fragment.append(sourceClone);
         });
