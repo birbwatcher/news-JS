@@ -14,7 +14,10 @@ class Sources {
     draw(data: NewsSource[]): void {
         const fragment: DocumentFragment = document.createDocumentFragment();
         const sourceItemTemp: HTMLTemplateElement | null = document.querySelector('#sourceItemTemp');
-
+        const sourceItemTempBlank: HTMLOptionElement = document.createElement('option');
+        sourceItemTempBlank.disabled = true;
+        sourceItemTempBlank.selected = true;
+        sourceItemTempBlank.innerHTML = "Choose the News Source";
         data.forEach((item) => {
             const sourceClone: HTMLElement = sourceItemTemp?.content.cloneNode(true) as HTMLElement;
             const sourceItem: HTMLElement | null = sourceClone?.querySelector('.source__item-name');
@@ -24,7 +27,7 @@ class Sources {
 
             fragment.append(sourceClone);
         });
-
+        document.querySelector('.sources')?.append(sourceItemTempBlank);
         document.querySelector('.sources')?.append(fragment);
     }
 }
