@@ -15,6 +15,7 @@ interface IResponse {
 type ApiOptions = {
     apiKey: string
 }
+type urlOptionsKeys = 'sources' | 'apiKey';
 
 export type CallbackType = (data: DrawData) => void;
 
@@ -50,7 +51,7 @@ class Loader {
         const urlOptions = { ...this.options, ...options };
         let url = `${this.baseLink}${endpoint}?`;
 
-        Object.keys(urlOptions).forEach((key) => {
+        Object.keys(urlOptions).forEach((key: urlOptionsKeys) => {
             url += `${key}=${urlOptions[key]}&`;
         });
 

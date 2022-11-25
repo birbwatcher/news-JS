@@ -12,7 +12,7 @@ class AppController extends AppLoader {
         );
     }
 
-    getNews(e: Event, callback ){
+    getNews(e: Event, callback: CallbackType ){
         let target = e.target as HTMLInputElement;
         // console.log(target.value)
         // console.log(target.classList)
