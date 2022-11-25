@@ -1,13 +1,7 @@
 import AppController from '../controller/controller';
 import { AppView } from '../view/appView';
-import News from '../view/news/news';
 import { DrawData } from '../view/appView';
 
-interface Myresponse {
-    articles: News[];
-    status: String;
-    totalResults: Number;
-}
 
 class App {
     controller: AppController;

@@ -9,7 +9,7 @@ class AppLoader extends Loader {
     constructor() {
         super(apiConfig.url, {
             apiKey: apiConfig.apiKey,
-        }) // получите свой ключ https://newsapi.org/);
+        })
     }
 }
 
