@@ -47,18 +47,20 @@ class Loader {
         return res;
     }
 
-    makeUrl(options: Options, endpoint: string): string {
+    makeUrl(options: Options, endpoint?: string): string {
         const urlOptions = { ...this.options, ...options };
         let url = `${this.baseLink}${endpoint}?`;
 
-        Object.keys(urlOptions).forEach((key: urlOptionsKeys) => {
+        const keysArr = Object.keys(urlOptions) as urlOptionsKeys[];
+
+        keysArr.forEach((key) => {
             url += `${key}=${urlOptions[key]}&`;
         });
 
         return url.slice(0, -1);
     }
 
-    load(method: string, endpoint: string, callback: CallbackType, options: Options) {
+    load(method: string, endpoint: string | undefined, callback: CallbackType, options: Options) {
         fetch(this.makeUrl(options, endpoint), { method })
             .then(this.errorHandler)
             .then((res) => res.json())

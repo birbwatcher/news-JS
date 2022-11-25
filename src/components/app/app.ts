@@ -18,9 +18,8 @@ class App {
     }
 
     start() {
-        document
-            .querySelector('.sources')
-            .addEventListener('change', (e) => this.controller.getNews(e, (data: DrawData) => this.view.drawNews(data)));
+        const sources = document.querySelector('.sources') as HTMLElement
+        sources.addEventListener('change', (e) => this.controller.getNews(e, (data: DrawData) => this.view.drawNews(data)));
         this.controller.getSources((data) => this.view.drawSources(data));
     }
 }
