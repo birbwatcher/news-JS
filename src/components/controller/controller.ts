@@ -11,23 +11,23 @@ class AppController extends AppLoader {
         );
     }
 
-    getNews(e: Event, callback: CallbackType ){
-        let target = e.target as HTMLInputElement;
+    getNews(e: Event, callback: CallbackType) {
+        const target = e.target as HTMLInputElement;
         const newsContainer = e.currentTarget as HTMLElement;
-                const sourceId = target.value;
-                if (newsContainer.getAttribute('data-source') !== sourceId) {
-                    newsContainer.setAttribute('data-source', sourceId);
-                    super.getResp(
-                        {
-                            endpoint: 'everything',
-                            options: {
-                                sources: sourceId,
-                            },
-                        },
-                        callback
-                    );
-                }
-                return;
+        const sourceId = target.value;
+        if (newsContainer.getAttribute('data-source') !== sourceId) {
+            newsContainer.setAttribute('data-source', sourceId);
+            super.getResp(
+                {
+                    endpoint: 'everything',
+                    options: {
+                        sources: sourceId,
+                    },
+                },
+                callback
+            );
+        }
+        return;
     }
 }
 

@@ -1,5 +1,5 @@
 import './sources.css';
-interface NewsSource  {
+interface NewsSource {
     urlToImage: string;
     category: string;
     country: string;
@@ -7,8 +7,8 @@ interface NewsSource  {
     id: string;
     language: string;
     name: string;
-    url: string;}
-
+    url: string;
+}
 
 class Sources {
     draw(data: NewsSource[]): void {
@@ -17,7 +17,7 @@ class Sources {
         const sourceItemTempBlank: HTMLOptionElement = document.createElement('option');
         sourceItemTempBlank.disabled = true;
         sourceItemTempBlank.selected = true;
-        sourceItemTempBlank.innerHTML = "Choose the News Source:";
+        sourceItemTempBlank.innerHTML = 'Choose the News Source:';
         data.forEach((item) => {
             const sourceClone: HTMLElement = sourceItemTemp?.content.cloneNode(true) as HTMLElement;
             const sourceItem: HTMLElement | null = sourceClone?.querySelector('.source__item-name');
@@ -33,4 +33,4 @@ class Sources {
 }
 
 export default Sources;
-export {NewsSource};
+export { NewsSource };

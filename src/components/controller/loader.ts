@@ -1,6 +1,5 @@
-
-import { DrawData } from "../view/appView";
-import { apiConfig } from "./appLoader";
+import { DrawData } from '../view/appView';
+import { apiConfig } from './appLoader';
 
 interface Options {
     sources?: string;
@@ -11,10 +10,9 @@ interface IResponse {
     options?: Options;
 }
 
-
 type ApiOptions = {
-    apiKey: string
-}
+    apiKey: string;
+};
 type urlOptionsKeys = 'sources' | 'apiKey';
 
 export type CallbackType = (data: DrawData) => void;
@@ -26,13 +24,10 @@ class Loader {
         this.baseLink = baseLink;
         this.options = options;
     }
-    getResp(
-        { endpoint, options = {} }: IResponse,
-        callback: CallbackType
-    ): void {
+    getResp({ endpoint, options = {} }: IResponse, callback: CallbackType): void {
         const fallback = () => {
             console.error('No callback for GET response');
-        }
+        };
         const newCallback = callback || fallback;
         this.load('GET', endpoint, newCallback, options);
     }
@@ -64,7 +59,9 @@ class Loader {
         fetch(this.makeUrl(options, endpoint), { method })
             .then(this.errorHandler)
             .then((res) => res.json())
-            .then((data: DrawData) => {return callback(data)})
+            .then((data: DrawData) => {
+                return callback(data);
+            })
             .catch((err: string) => console.error(err));
     }
 }

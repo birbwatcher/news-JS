@@ -9,9 +9,9 @@ class AppLoader extends Loader {
     constructor() {
         super(apiConfig.url, {
             apiKey: apiConfig.apiKey,
-        })
+        });
     }
 }
 
 export default AppLoader;
-export { apiConfig }
+export { apiConfig };
