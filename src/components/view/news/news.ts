@@ -3,7 +3,7 @@ import { NewsSource } from '../sources/sources';
 
 interface News extends NewsSource {
     author: string;
-    source: {name: string};
+    source: { name: string };
     publishedAt: string;
     title: string;
 }
@@ -17,25 +17,26 @@ class News {
 
         news.forEach((item, idx) => {
             const newsClone = newsItemTemp?.content.cloneNode(true) as HTMLElement;
+            const newsItem = newsClone.querySelector('.news__item');
 
             if (idx % 2) {
-                if (newsClone.querySelector('.news__item')) {
-                    newsClone.querySelector('.news__item')!.classList.add('alt');
+                if (newsItem) {
+                    newsItem.classList.add('alt');
                 }
             }
 
             const itemImage = <HTMLElement>newsClone.querySelector('.news__meta-photo');
-            itemImage!.style.backgroundImage = `url(${item.urlToImage || 'img/news_placeholder.jpg'})`;
+            if (itemImage) {
+                itemImage.style.backgroundImage = `url(${item.urlToImage || 'img/news_placeholder.jpg'})`;
+            }
 
             const itemAuthor = <HTMLElement>newsClone.querySelector('.news__meta-author');
-            itemAuthor!.textContent = item.author || item.source.name;
+            if (itemAuthor) {
+                itemAuthor.textContent = item.author || item.source.name;
+            }
 
             const itemPublishedDate = <HTMLElement>newsClone.querySelector('.news__meta-date');
-            itemPublishedDate.textContent = item.publishedAt
-                .slice(0, 10)
-                .split('-')
-                .reverse()
-                .join('-');
+            itemPublishedDate.textContent = item.publishedAt.slice(0, 10).split('-').reverse().join('-');
             const itemTitle = <HTMLElement>newsClone.querySelector('.news__description-title');
             itemTitle.textContent = item.title;
             const itemSourceName = <HTMLElement>newsClone.querySelector('.news__description-source');

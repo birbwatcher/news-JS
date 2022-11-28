@@ -13,6 +13,7 @@ interface IResponse {
 type ApiOptions = {
     apiKey: string;
 };
+
 type urlOptionsKeys = 'sources' | 'apiKey';
 
 export type CallbackType = (data: DrawData) => void;
