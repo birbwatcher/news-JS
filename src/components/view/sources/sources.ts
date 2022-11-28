@@ -21,7 +21,9 @@ class Sources {
         data.forEach((item) => {
             const sourceClone: HTMLElement = sourceItemTemp?.content.cloneNode(true) as HTMLElement;
             const sourceItem: HTMLElement | null = sourceClone?.querySelector('.source__item-name');
-            sourceItem!.textContent = item.name;
+            if (sourceItem !== null) {
+                sourceItem.textContent = item.name;
+            }
             sourceClone.querySelector('.source__item')?.setAttribute('data-source-id', item.id);
             sourceClone.querySelector('.source__item')?.setAttribute('value', item.id);
 
