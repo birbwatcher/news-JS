@@ -2,16 +2,16 @@ import { DrawData } from '../view/appView';
 import { apiConfig } from './appLoader';
 
 interface Options {
-    sources?: string;
+    readonly sources?: string;
 }
 
 interface IResponse {
-    endpoint?: string;
-    options?: Options;
+    readonly endpoint?: string;
+    readonly options?: Options;
 }
 
 type ApiOptions = {
-    apiKey: string;
+    readonly apiKey: string;
 };
 
 type urlOptionsKeys = 'sources' | 'apiKey';
@@ -19,13 +19,13 @@ type urlOptionsKeys = 'sources' | 'apiKey';
 export type CallbackType = (data: DrawData) => void;
 
 class Loader {
-    baseLink: apiConfig;
-    options: ApiOptions;
+    readonly baseLink: apiConfig;
+    readonly options: ApiOptions;
     constructor(baseLink: apiConfig, options: ApiOptions) {
         this.baseLink = baseLink;
         this.options = options;
     }
-    getResp({ endpoint, options = {} }: IResponse, callback: CallbackType): void {
+    public getResp({ endpoint, options = {} }: IResponse, callback: CallbackType): void {
         const fallback = () => {
             console.error('No callback for GET response');
         };
@@ -43,7 +43,7 @@ class Loader {
         return res;
     }
 
-    makeUrl(options: Options, endpoint?: string): string {
+    private makeUrl(options: Options, endpoint?: string): string {
         const urlOptions = { ...this.options, ...options };
         let url = `${this.baseLink}${endpoint}?`;
 
@@ -56,7 +56,7 @@ class Loader {
         return url.slice(0, -1);
     }
 
-    load(method: string, endpoint: string | undefined, callback: CallbackType, options: Options) {
+    public load(method: string, endpoint: string | undefined, callback: CallbackType, options: Options) {
         fetch(this.makeUrl(options, endpoint), { method })
             .then(this.errorHandler)
             .then((res) => res.json())

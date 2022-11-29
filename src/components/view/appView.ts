@@ -3,8 +3,8 @@ import Sources from './sources/sources';
 import { NewsSource } from './sources/sources';
 
 interface DrawData {
-    sources: NewsSource[],
-    articles: News[],
+    readonly sources: NewsSource[];
+    readonly articles: News[];
 }
 
 export class AppView {
