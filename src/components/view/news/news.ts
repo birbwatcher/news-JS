@@ -1,15 +1,22 @@
 import './news.css';
 import { NewsSource } from '../sources/sources';
 
-interface News extends NewsSource {
+interface News<T> {
     author: string;
-    source: { name: string };
-    publishedAt: string;
-    title: string;
+    source: {
+        id: number;
+        name: string;
+    };
+    publishedAt: T;
+    title: T;
+    description: T;
+    url: T;
+    urlToImage: T;
+    // articles: T[];
 }
 
-class News {
-    draw(data: News[]): void {
+class News<T> {
+    draw(data: News<string>[]): void {
         const news = data.length >= 10 ? data.filter((_item, idx) => idx < 10) : data;
 
         const fragment: DocumentFragment = document.createDocumentFragment();

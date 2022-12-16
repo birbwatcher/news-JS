@@ -5,13 +5,18 @@ enum apiConfig {
     url = 'https://newsapi.org/v2/',
 }
 
+interface apiConfig1 {
+    apiKey: string;
+    url: string;
+}
+
 class AppLoader extends Loader {
     constructor() {
-        super(apiConfig.url, {
+        super(apiConfig, {
             apiKey: apiConfig.apiKey,
         });
     }
 }
 
 export default AppLoader;
-export { apiConfig };
+export { apiConfig, apiConfig1 };

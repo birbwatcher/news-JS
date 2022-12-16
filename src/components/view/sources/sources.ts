@@ -8,6 +8,8 @@ interface NewsSource {
     language: string;
     name: string;
     url: string;
+    sources: string[];
+    articles: string[];
 }
 
 class Sources {

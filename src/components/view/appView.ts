@@ -4,11 +4,11 @@ import { NewsSource } from './sources/sources';
 
 interface DrawData {
     readonly sources: NewsSource[];
-    readonly articles: News[];
+    readonly articles: News<string>[];
 }
 
 export class AppView {
-    news: News;
+    news: News<string>;
     sources: Sources;
     constructor() {
         this.news = new News();

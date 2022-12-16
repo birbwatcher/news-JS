@@ -12,7 +12,7 @@ class App {
 
     start() {
         const sources = document.querySelector('.sources') as HTMLElement;
-        sources.addEventListener('change', (e) =>
+        sources.addEventListener('change', (e: Event) =>
             this.controller.getNews(e, (data: DrawData) => this.view.drawNews(data))
         );
         this.controller.getSources((data) => this.view.drawSources(data));

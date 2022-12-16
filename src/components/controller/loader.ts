@@ -1,5 +1,5 @@
 import { DrawData } from '../view/appView';
-import { apiConfig } from './appLoader';
+import { apiConfig, apiConfig1 } from './appLoader';
 
 interface Options {
     readonly sources?: string;
@@ -10,19 +10,19 @@ interface IResponse {
     readonly options?: Options;
 }
 
-type ApiOptions = {
-    readonly apiKey: string;
-};
+// type ApiOptions = {
+//     readonly apiKey: string;
+// };
 
 type urlOptionsKeys = 'sources' | 'apiKey';
 
 export type CallbackType = (data: DrawData) => void;
 
 class Loader {
-    readonly baseLink: apiConfig;
-    readonly options: ApiOptions;
-    constructor(baseLink: apiConfig, options: ApiOptions) {
-        this.baseLink = baseLink;
+    readonly baseLink: string | undefined;
+    readonly options: Partial<apiConfig1>;
+    constructor(baseLink: Partial<apiConfig1>, options: Partial<apiConfig1>) {
+        this.baseLink = baseLink.url;
         this.options = options;
     }
     public getResp({ endpoint, options = {} }: IResponse, callback: CallbackType): void {
