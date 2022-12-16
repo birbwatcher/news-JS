@@ -5,7 +5,7 @@ enum apiConfig {
     url = 'https://newsapi.org/v2/',
 }
 
-interface apiConfig1 {
+interface apiConfigInfo {
     apiKey: string;
     url: string;
 }
@@ -19,4 +19,4 @@ class AppLoader extends Loader {
 }
 
 export default AppLoader;
-export { apiConfig, apiConfig1 };
+export { apiConfig, apiConfigInfo };
